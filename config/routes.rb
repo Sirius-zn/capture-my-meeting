@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   
 	get '/login', to: 'site#login'
 	get '/sign_up', to: 'site#sign_up'
+
+	resources :users
 end
