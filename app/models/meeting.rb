@@ -1,2 +1,2 @@
-class Meeting < ApplicationRecord
+class Meeting < ActiveRecord::Base
 end

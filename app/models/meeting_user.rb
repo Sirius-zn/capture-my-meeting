@@ -1,2 +1,2 @@
-class MeetingUser < ApplicationRecord
+class MeetingUser < ActiveRecord::Base
 end
