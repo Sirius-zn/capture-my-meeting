@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	skip_before_filter :verify_authenticity_token
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
 	def index
 		@users = User.all
@@ -59,6 +60,6 @@ class UsersController < ApplicationController
 		end
 	
 		def user_params
-			params.require(:user).permit(:email, :password, :first_name, :last_name)
+			params.permit(:email, :password, :first_name, :last_name)
 		end
 end
