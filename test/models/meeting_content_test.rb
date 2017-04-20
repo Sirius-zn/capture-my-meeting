@@ -2,7 +2,9 @@ require 'test_helper'
 
 class MeetingContentTest < ActiveSupport::TestCase
 	def setup
-		@mc = MeetingContent.new(:meeting_id => 31, :image => "blob")
+		@meeting = Meeting.new(:code => "abcd", :password => "6GCBLY")
+		@meeting.save!
+		@mc = MeetingContent.new(:meeting_id => @meeting.id, :image => "blob")
 	end
 
 	test "should be valid" do

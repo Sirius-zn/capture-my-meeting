@@ -2,7 +2,13 @@ require 'test_helper'
 
 class MeetingUserTest < ActiveSupport::TestCase
 	def setup
-		@mu = MeetingUser.new(user_id: 31, meeting_id: 3)		
+		@user = User.new(:email => "user@example.com", :password => "a1!Abbf3s/~!")
+		@user.save!
+
+		@meeting = Meeting.new(:code => "abcd", :password => "6GCBLY")
+		@meeting.save!
+
+		@mu = MeetingUser.new(user_id: @user.id, meeting_id: @meeting.id)		
 	end
 	
 	test "should be valid" do
