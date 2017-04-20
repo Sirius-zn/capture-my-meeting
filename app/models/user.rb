@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
 	validates :email, uniqueness: true
 	
 	has_many :meeting_users
+
+	def authenticate(pass)
+		self.password == pass
+	end
 end

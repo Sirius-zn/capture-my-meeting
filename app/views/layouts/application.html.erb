@@ -13,8 +13,11 @@
     <div>
       <ul>
         <a href="/"><li>Home</li></a>
-		<a href="/sign_up"><li>Sign Up</li></a>
-        <a href="/login"><li>Login</li></a>
+		<% if logged_in? %>
+			<li><%= link_to "Log out", logout_path, method: :delete %></li>
+		<% else %>
+        	<a href="/login"><li>Login</li></a>
+		<% end %>
       </ul>
     </div>
     <%= yield %>
