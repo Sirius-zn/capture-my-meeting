@@ -1,1 +1,5 @@
-<h1> HOME HERE </h1>
+<% unless current_user %>
+    <h1> HOME HERE </h1>
+<% else %>
+    <%= render 'home' %>
+<% end %>
