@@ -1,5 +1,5 @@
 <h1>Logged in... </h1>
 <ul>
-    <li><a href="#">Start Meeting</a></li>
-    <li><input name="meeting_id" type=text placeholder="Meeting ID"><a href="#">Join Meeting</a></li>
+    <li><%= link_to "Start Meeting", new_meeting_path %></li>
+    <li><%= link_to "Join Meeting", meetings_url %></li>
 </ul>
