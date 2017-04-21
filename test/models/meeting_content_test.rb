@@ -2,7 +2,9 @@ require 'test_helper'
 
 class MeetingContentTest < ActiveSupport::TestCase
 	def setup
-		@meeting = Meeting.new(:code => "abcd", :password => "6GCBLY")
+        @user = User.new(:email => "ex@example.com", :password => "aa")
+        @user.save!
+		@meeting = Meeting.new(:code => "abcd", :password => "6GCBLY", :user_id => @user.id)
 		@meeting.save!
 		@mc = MeetingContent.new(:meeting_id => @meeting.id, :image => "blob")
 	end
