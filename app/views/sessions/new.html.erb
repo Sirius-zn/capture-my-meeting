@@ -6,8 +6,9 @@
             <%= f.email_field :email, placeholder: "email@example.com" %>
             <%= f.password_field :password, placeholder: "********" %>
 
-            <%= f.submit "Login"%>
-            <span>No account? <a href="/sign_up">Sign Up</a></span>
+            <span class="alternate">No account? <a href="/sign_up">Sign Up</a></span>
+
+            <button class="submit"><span>Login</span></button>
         <% end %>
     </div>
 </div>

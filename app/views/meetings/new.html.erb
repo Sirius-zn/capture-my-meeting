@@ -1,10 +1,13 @@
-<h1>New Meeting...</h1>
-<p>Select your role:</p>
+<div class="container flex-center">
+    <div class="card">
+        <span class="title">Create</span>
 
-<form method="POST" action="/meetings">
-    <ul>
-        <li><input name="user_role" type="radio" value="presenter" checked> Presenter</li>
-        <li><input name="user_role" type="radio" value="audience"> Audience </li>
-    </ul>
-    <input type="submit" value="Start Meeting">
-</form>
+        <form method="POST" action="/meetings" class="form-control new">
+            <ul>
+                <li><input name="user_role" type="radio" value="presenter" checked> I am a presenter</li>
+                <li><input name="user_role" type="radio" value="audience"> I am an audience member </li>
+            </ul>
+            <button class="submit"><i class="fa fa-video-camera" aria-hidden="true"></i> <span>Start Meeting</span></button>
+        </form>
+    </div>
+</div>
