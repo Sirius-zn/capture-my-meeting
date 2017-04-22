@@ -6,7 +6,7 @@
     flex-direction: row;
 }
 
-.card {
+a.card {
     display: flex;
     text-decoration: none;
     background-color: #FFFFFF;
@@ -29,10 +29,6 @@
         -webkit-box-shadow: 0px 0px 28px -3px rgba(0,0,0,0.75);
         -moz-box-shadow: 0px 0px 28px -3px rgba(0,0,0,0.75);
         box-shadow: 0px 0px 28px -3px rgba(0,0,0,0.75);
-    }
-
-    .fa {
-        color: #006400;
     }
 
     span {

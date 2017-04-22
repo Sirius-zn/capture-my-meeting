@@ -5,6 +5,10 @@ class MeetingsController < ApplicationController
     include MeetingsHelper
 
     def join
+        unless params[:code].present? || params[:password].present?
+            redirect_to meeting_url
+        end
+
         @meeting = Meeting.find_by(:code => params[:code])
         if @meeting.authenticate?(params[:password])
             mu = MeetingUser.find_by(:user_id => current_user.id, :meeting_id => @meeting.id)

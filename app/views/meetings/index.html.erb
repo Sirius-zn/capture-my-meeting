@@ -1,13 +1,15 @@
-<div class="card">
-    <form method="POST" action="/meetings/join">
-        <h3>Join A Meeting...</h3>
-        <ul>
-            <li><input name="user_role" type="radio" value="presenter" checked> Presenter</li>
-            <li><input name="user_role" type="radio" value="audience"> Audience </li>
-        </ul>
+<div class="container flex-center">
+    <div class="card">
+        <span class="title">Join</span>
+        <form method="POST" action="/meetings/join" class="form-control">
+            <ul>
+                <li><input name="user_role" type="radio" value="presenter" checked> Presenter</li>
+                <li><input name="user_role" type="radio" value="audience"> Audience </li>
+            </ul>
 
-        <input type="text" name="code" placeholder="code">
-        <input type="password" name="password" placeholder="password">
-        <input type="submit" value="Join Meeting">
-    </form>
+            <input type="text" name="code" placeholder="code" required>
+            <input type="password" name="password" placeholder="password" required>
+            <button><i class="fa fa-sign-in" aria-hidden="true"></i></button>
+        </form>
+    </div>
 </div>

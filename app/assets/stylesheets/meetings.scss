@@ -1,7 +1,82 @@
-.content {
-    margin-top: 15%;
+.card {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #FFFFFF;
+    text-align: center;
 
-    .btn {
-        margin-left: 20px;
+    margin-left: 50px;
+    margin-top: 10%;
+    height: 300px;
+    width: 30%;
+
+    border: 1px solid #b9b9b9;
+    border-radius: 5px;
+    color: #1d1d1d;
+
+
+    .title {
+        display: block;
+        position: absolute;
+        width: 100%;
+        text-align: left;
+        top: 0;
+        left: 0;
+        padding: 10px;
+        border-bottom: 1px solid #b9b9b9;
+        color: #6f6f6f;
+        letter-spacing: 2px;
+    }
+
+}
+
+.form-control {
+    text-align: center;
+    align-self: center;
+    & > * {
+        display: block;
+    }
+
+    ul {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        margin: 0;
+        padding-left: 0;
+        li {
+            display: inline;
+        }
+    }
+
+    & > input {
+        font-size: 20px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        border-style: groove;
+        width: 100%;
+    }
+
+    input {
+        margin-top: 20px;
+    }
+
+    button {
+        background-color: white;
+        border: none;
+        font-size: 30px;
+        text-align: right;
+        cursor: pointer;
+        float: right;
+
+        &:hover {
+            i {
+                font-size: 30px;
+            }
+        }
+
+        &:focus {
+            outline: none;
+        }
     }
 }
