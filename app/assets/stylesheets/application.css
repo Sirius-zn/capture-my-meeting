@@ -23,6 +23,7 @@
 }
 
  body, html {
+     height: 100vh;
      margin: 0;
      background-color: #EEEEEE;
  }
@@ -36,9 +37,9 @@
 #header {
     display: flex;
     justify-content: space-between;
-    background-color: #4CAF50;
-    1px solid hsla(122, 39%, 44%, 1);
-    height: 100%;
+    background-color: #006400;
+    border-bottom: 1px solid #005600;
+    height: 50px;
     padding: 10px 10px;
 }
 
@@ -52,12 +53,43 @@
 
 #header nav a {
     text-decoration: none;
-    border-bottom: 1px solid #4CAF50;
     color: white;
     padding: 10px;
+    align-self: center;
 }
 
 #header nav a:hover {
     border-radius: 5%;
-    border-bottom: 1px solid white;
+    text-decoration: line-through;
+}
+
+.container {
+    height: calc(100vh - 50px);
+    width: 100%;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 10px;
+    text-decoration: none;
+    border-radius: 15px;
+    border: 1px solid #357e38;
+}
+
+.btn-default {
+    color: white;
+    background-color: #43A047;
+}
+
+.text-xlarge {
+    font-size: 42px;
+}
+
+.fa-6 {
+    font-size: 180px !important;
 }

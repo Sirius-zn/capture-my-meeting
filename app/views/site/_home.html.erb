@@ -1,5 +1,11 @@
-<h1>Logged in... </h1>
-<ul>
-    <li><%= link_to "Start Meeting", new_meeting_path %></li>
-    <li><%= link_to "Join Meeting", meetings_url %></li>
-</ul>
+<div class="container flex-center">
+    <%= link_to new_meeting_path, :class => "card card-trans" do %>
+        <i class="fa fa-video-camera fa-6" aria-hidden="true"></i>
+        <span>Start Meeting</span>
+    <% end %>
+
+    <%= link_to meetings_url, :class => "card card-trans" do %>
+        <i class="fa fa-sign-in fa-6" aria-hidden="true"></i>
+        <span>Join Meeting</span>
+    <% end %>
+</div>
