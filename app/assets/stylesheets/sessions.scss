@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .form-control {
     span {
+        font-size: 12px;
         text-align: right;
     }
 
@@ -11,5 +12,7 @@
         color: #FFFFFF;
         border: 1px solid #004d00;
         margin-bottom: 5px;
+        letter-spacing: 1px;
+        font-weight: 100;
     }
 }
