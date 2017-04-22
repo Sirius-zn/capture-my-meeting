@@ -9,8 +9,7 @@ Rails.application.routes.draw do
 	delete '/logout', to: 'sessions#destroy'
 
 	get '/sign_up', to: 'site#sign_up'
-
-
+    post '/meetings/join', to: 'meetings#join'
 
 	resources :users
     resources :meetings

@@ -4,8 +4,24 @@ class MeetingsController < ApplicationController
 
     include MeetingsHelper
 
+    def join
+        @meeting = Meeting.find_by(:code => params[:code])
+        if @meeting.authenticate?(params[:password])
+            mu = MeetingUser.find_by(:user_id => current_user.id, :meeting_id => @meeting.id)
+            if (mu.nil?)
+                mu = MeetingUser.new(:user_id => current_user.id, :meeting_id => @meeting.id, :user_role => params[:user_role])
+                mu.save
+            end
+
+            redirect_to @meeting
+        end
+    end
+
     def show
         @mu = MeetingUser.find_by(:meeting_id => @meeting.id, :user_id => current_user.id)
+
+        # TODO: Output error
+        redirect_to meetings_url if @mu.nil?
     end
 
     # GET /meetings/new

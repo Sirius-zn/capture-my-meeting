@@ -8,7 +8,7 @@ class Meeting < ActiveRecord::Base
 	has_many :meeting_contents
 	has_many :meeting_users
 
-    def authenticate(str)
+    def authenticate?(str)
         str == self.password
     end
 end
