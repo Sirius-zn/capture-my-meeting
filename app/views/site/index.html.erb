@@ -1,5 +1,7 @@
 <% unless current_user %>
-    <h1> HOME HERE </h1>
+    <script>
+        window.location.href = "<%= login_path %>";
+    </script>
 <% else %>
     <%= render 'home' %>
 <% end %>

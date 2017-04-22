@@ -13,11 +13,10 @@
 <body>
 
     <div id="header">
-        <span id="logo"><strong>CaptureMyMeeting</strong></span>
+        <a id="logo" class="noselect" href="/"><span><strong>CaptureMyMeeting</strong></span></a>
         <nav id="nav-head">
-            <a href="/">Home</a>
             <% if logged_in? %>
-                <%= link_to "Profile", @current_user %>
+                <%= link_to current_user.email, edit_user_path(current_user) %>
                 <%= link_to "Log out", logout_path, method: :delete %>
             <% else %>
                 <a href="/login">Login</a>
