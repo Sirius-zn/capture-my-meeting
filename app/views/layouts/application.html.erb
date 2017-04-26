@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CaptureMyMeeting</title>
-    <%= csrf_meta_tags %>
+	<title>CaptureMyMeeting</title>
+	<%= csrf_meta_tags %>
+	<script type="text/javascript">
+		window.meeting = {
+			id: <%= @meeting.present? ? @meeting.id : 0 %>
+		};
+	</script>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="https://use.fontawesome.com/e411d41a69.js"></script>
-	<%= javascript_include_tag params[:controller] %> 
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://use.fontawesome.com/e411d41a69.js"></script>
+	<%= javascript_include_tag params[:controller] %>
 </head>
 
 <body>
 
-    <div id="header">
-        <a id="logo" class="noselect" href="/"><span><strong>CaptureMyMeeting</strong></span></a>
-        <nav id="nav-head">
-            <% if logged_in? %>
-                <%= link_to current_user.email, edit_user_path(current_user) %>
-                <%= link_to "Log out", logout_path, method: :delete %>
-            <% else %>
-                <a href="/login">Login</a>
-            <% end %>
-        </nav>
-    </div>
-    <%= yield %>
+	<div id="header">
+		<a id="logo" class="noselect" href="/"><span><strong>CaptureMyMeeting</strong></span></a>
+		<nav id="nav-head">
+			<% if logged_in? %>
+			<%= link_to current_user.email, edit_user_path(current_user) %>
+			<%= link_to "Log out", logout_path, method: :delete %>
+			<% else %>
+			<a href="/login">Login</a>
+			<% end %>
+		</nav>
+	</div>
+	<%= yield %>
 
 </body>
 </html>
