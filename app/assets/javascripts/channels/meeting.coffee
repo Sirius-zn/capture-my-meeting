@@ -9,8 +9,9 @@ App.meeting = App.cable.subscriptions.create {
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    # Called when there's incoming data on the websocket for this channel
-    alert "Received: #{data['image']}"
+    if data != undefined && data['status'] == true
+      currImg = data['image'];
+      $("img", $("#meeting")).attr("src", currImg);
 
   send_image: (filename, image, meeting_id)->
     @perform 'send_image', image: image, filename: filename, id: meeting_id

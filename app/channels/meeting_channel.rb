@@ -8,6 +8,6 @@ class MeetingChannel < ApplicationCable::Channel
   end
 
   def send_image(data)
-    ActionCable.server.broadcast "meetings_#{data['id']}", image: data['image']
+    MeetingBroadcastJob.perform_now data['filename'], data['image'], data['id']
   end
 end

@@ -1,14 +1,29 @@
 class Meeting < ActiveRecord::Base
-	validates_presence_of :password
-	validates_presence_of :code
-    validates_presence_of :user
+  after_create_commit :create_upload_folder
+  validates_presence_of :password
+  validates_presence_of :code
+  validates_presence_of :user
 
-    belongs_to :user
+  belongs_to :user
 
-	has_many :meeting_contents
-	has_many :meeting_users
+  has_many :meeting_contents
+  has_many :meeting_users
 
-    def authenticate?(str)
-        str == self.password
+  def authenticate?(str)
+    str == self.password
+  end
+
+  def create_upload_folder
+    # Create /uploads folder if it doesn't exist
+    dirname = "#{Rails.root}/uploads"
+    unless File.directory?(dirname)
+      system("mkdir #{dirname}")
     end
+
+    # Create folder to store images if it doesn't exist
+    dirname = "#{dirname}/#{@meeting.id}"
+    unless File.directory?(dirname)
+      system("mkdir #{dirname}")
+    end
+  end
 end

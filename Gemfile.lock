@@ -50,6 +50,8 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    data_uri (0.1.0)
+    digest (0.0.1)
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.18)
@@ -157,6 +159,8 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
+  data_uri
+  digest
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)

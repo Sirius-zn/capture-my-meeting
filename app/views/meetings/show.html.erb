@@ -1,6 +1,16 @@
+<script type="text/javascript">
+	window.meeting.role = "<%= @mu.user_role %>";
+	window.meeting.id = "<%= @meeting.id %>";
+</script>
+
 <h1>In a meeting... </h1>
 <h2>Code: <%= @meeting.code %></h2>
 <h2>Pass: <%= @meeting.password %></h2>
 <h2>Role: <%= @mu.user_role %></h2>
-<div data-meeting-id="<%= @meeting.id %>">
+<div id="meeting" data-meeting-id="<%= @meeting.id %>">
+	<% if @mu.user_role == "presenter" %>
+	<canvas id="meeting-canvas"></canvas>
+	<video id="video-src" autoplay></video>
+	<% end %>
+	<img src="">
 </div>

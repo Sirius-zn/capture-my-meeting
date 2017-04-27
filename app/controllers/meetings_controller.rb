@@ -1,7 +1,6 @@
 class MeetingsController < ApplicationController
   skip_before_filter :verify_authenticity_token
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
-  after_commit :create_upload_folder
 
   include MeetingsHelper
 
@@ -65,19 +64,5 @@ class MeetingsController < ApplicationController
 
     def meeting_params
       params.require(:user_role)
-    end
-
-    def create_upload_folder
-      # Create /uploads folder if it doesn't exist
-      dirname = "#{Rails.root}/uploads"
-      unless File.directory?(dirname)
-        system("mkdir #{dirname}")
-      end
-
-      # Create folder to store images if it doesn't exist
-      dirname = "#{dirname}/#{@meeting.id}"
-      unless File.directory?(dirname)
-        system("mkdir #{dirname}")
-      end
     end
 end
