@@ -35,6 +35,7 @@ $(document).ready(function() {
 		setTimeout(function() {
 			updateMedia();
 			takeSnapshot();
+			startPresenting();
 		}, interval);
 	}
 
