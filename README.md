@@ -1,24 +1,8 @@
-# README
+# Instructions
+0. Download and install [Rails](https://gorails.com/setup/ubuntu/16.04)
+1. Run `bundle install`
+2. Run `rails s`
+3. Should be ready at localhost:3000
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Location of Images
+Images are saved under `uploads/<meeting_id>/<image>`
