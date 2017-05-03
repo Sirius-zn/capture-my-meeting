@@ -2,6 +2,30 @@
     display:none;
 }
 
+#info {
+    position: absolute;
+    width: 100%;
+    padding: 5px;
+    text-align: right;
+    background: rgba(0, 0, 0, 0.1);
+    span {
+        color: black;
+    }
+}
+
+#meeting {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    img {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        // border: 1px solid #b9b9b9;
+    }
+}
+
 .card {
     display: flex;
     position: relative;

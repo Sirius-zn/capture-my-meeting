@@ -13,7 +13,7 @@
 }).call(this);
 
 $(document).ready(function() {
-	var fps = 2;
+	var fps = 1/5;
 	var interval = 1000 / fps;
 	var mediaOptions = {
 		audio: false,
