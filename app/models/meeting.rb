@@ -21,7 +21,7 @@ class Meeting < ActiveRecord::Base
     end
 
     # Create folder to store images if it doesn't exist
-    dirname = "#{dirname}/#{@meeting.id}"
+    dirname = "#{dirname}/#{self.id}"
     unless File.directory?(dirname)
       system("mkdir #{dirname}")
     end

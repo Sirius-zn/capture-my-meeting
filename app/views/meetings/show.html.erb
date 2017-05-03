@@ -9,8 +9,8 @@
 <h2>Role: <%= @mu.user_role %></h2>
 <div id="meeting" data-meeting-id="<%= @meeting.id %>">
 	<% if @mu.user_role == "presenter" %>
-	<canvas id="meeting-canvas"></canvas>
-	<video id="video-src" autoplay></video>
+	<canvas class="hidden" id="meeting-canvas"></canvas>
+	<video class="hidden" id="video-src" autoplay></video>
 	<% end %>
 	<img src="">
 </div>
