@@ -9,7 +9,7 @@ class MeetingChannel < ApplicationCable::Channel
     end
 
   def send_image(data)
-    MeetingBroadcastJob.perform_now data['filename'], data['image'], data['id']
+    MeetingBroadcastJob.perform_now data['filename'], data['image'], data['id'], data['src'], data['end']
   end
 
   def send_peer_id(data)
