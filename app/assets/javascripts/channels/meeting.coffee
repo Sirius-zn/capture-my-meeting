@@ -5,6 +5,7 @@ App.meeting = App.cable.subscriptions.create {
   connected: ->
     # Called when the subscription is ready for use on the server
     foo()
+    begin
 
   disconnected: ->
     # Called when the subscription has been terminated by the server
@@ -17,9 +18,6 @@ App.meeting = App.cable.subscriptions.create {
     if data != undefined && data['status'] == true
       currImg = data['image'];
       $("img", $("#meeting")).attr("src", currImg);
-
-  send_image: (filename, image, meeting_id)->
-    @perform 'send_image', image: image, filename: filename, id: meeting_id
 
   send_peer_id: (meeting_id, peer_id) ->
     alert "Message sent: mid:#{meeting_id} pid: #{peer_id}"
@@ -35,3 +33,6 @@ foo = () ->
 
   peer.on 'open', (id) ->
     App.meeting.send_peer_id window.meeting.id, id
+
+  send_image: (filename, image, meeting_id, coordSrc, coordEnd)->
+    @perform 'send_image', image: image, filename: filename, id: meeting_id, src: coordSrc, end: coordEnd
