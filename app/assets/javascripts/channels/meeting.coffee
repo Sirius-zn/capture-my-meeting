@@ -20,8 +20,10 @@ App.meeting = App.cable.subscriptions.create {
       $("img", $("#meeting")).attr("src", currImg);
 
   send_peer_id: (meeting_id, peer_id) ->
-    alert "Message sent: mid:#{meeting_id} pid: #{peer_id}"
     @perform 'send_peer_id', peer_id: peer_id, meeting_id: window.meeting.id
+
+  send_image: (filename, image, meeting_id, coordSrc, coordEnd)->
+    @perform 'send_image', image: image, filename: filename, id: meeting_id, src: coordSrc, end: coordEnd
 
 
 
@@ -33,6 +35,3 @@ foo = () ->
 
   peer.on 'open', (id) ->
     App.meeting.send_peer_id window.meeting.id, id
-
-  send_image: (filename, image, meeting_id, coordSrc, coordEnd)->
-    @perform 'send_image', image: image, filename: filename, id: meeting_id, src: coordSrc, end: coordEnd
