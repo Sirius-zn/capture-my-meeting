@@ -5,6 +5,7 @@
 	<%= csrf_meta_tags %>
 	<script type="text/javascript">
 		window.meeting = {
+			current_id: <%= current_user.present? ? current_user.id : -1%>,
 			id: <%= @meeting.present? ? @meeting.id : 0 %>
 		};
 	</script>

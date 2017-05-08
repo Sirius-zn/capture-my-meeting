@@ -17,15 +17,9 @@ class Meeting < ActiveRecord::Base
     # Create /uploads folder if it doesn't exist
     dirname = "#{Rails.root}/uploads"
     FileUtils.mkdir_p(dirname) unless File.directory?(dirname)
-    # unless File.directory?(dirname)
-    #   system("mkdir #{dirname}")
-    # end
 
     # Create folder to store images if it doesn't exist
     dirname = "#{dirname}/#{self.id}"
     FileUtils.mkdir_p(dirname) unless File.directory?(dirname)
-    # unless File.directory?(dirname)
-    #   system("mkdir #{dirname}")
-    # end
   end
 end

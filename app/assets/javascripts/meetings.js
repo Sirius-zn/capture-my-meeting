@@ -127,6 +127,7 @@ function callSetDrawBounds(canvas, video) {
 		console.log("GOODBYE");
 		$(canvas).addClass("hidden");
 		$("img").removeClass("hidden");
+		App.meeting.send_box(window.meeting.current_id, window.meeting.id, coordSrc, coordEnd);
 		startPresenting();
 	}));
 }
@@ -145,7 +146,7 @@ function takeSnapshot() {
 		// suffix = suffix.toLocaleTimeString().slice(0,-3);
 		var fileName = "IMG_" + suffix + ".png";
 
-		App.meeting.send_image(fileName, imgData, meetingId, coordSrc, coordEnd);
+		App.meeting.send_image(window.meeting.current_id, fileName, imgData, meetingId, coordSrc, coordEnd);
 	} else {
 		console.log(":()");
 	}

@@ -22,14 +22,14 @@ App.meeting = App.cable.subscriptions.create {
   send_peer_id: (meeting_id, peer_id) ->
     @perform 'send_peer_id', peer_id: peer_id, meeting_id: window.meeting.id
 
-  send_image: (filename, image, meeting_id, coordSrc, coordEnd)->
-    @perform 'send_image', image: image, filename: filename, id: meeting_id, src: coordSrc, end: coordEnd
+  send_image: (user_id, filename, image, meeting_id, coordSrc, coordEnd) ->
+    @perform 'send_image', user_id: user_id, image: image, filename: filename, id: meeting_id, src: coordSrc, dest: coordEnd
 
+  send_box: (user_id, meeting_id, coordSrc, coordEnd) ->
+    @perform 'send_box', user_id: user_id, meeting_id: meeting_id, src: coordSrc, dest: coordEnd
 
 
 foo = () ->
-  console.log "Hello World "
-  console.log "Sending pid"
   peer = new Peer
     key: window.meeting.api_key
 
