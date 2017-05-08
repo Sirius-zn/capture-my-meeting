@@ -2,6 +2,10 @@
     display:none;
 }
 
+#meeting-canvas {
+    width: 100%;
+}
+
 #info {
     position: absolute;
     width: 100%;
@@ -10,6 +14,10 @@
     background: rgba(0, 0, 0, 0.1);
     span {
         color: black;
+    }
+
+    .actions {
+        float: left;
     }
 }
 
