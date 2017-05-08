@@ -4,6 +4,7 @@ App.meeting = App.cable.subscriptions.create {
 },
   connected: ->
     # Called when the subscription is ready for use on the server
+    begin
 
   disconnected: ->
     # Called when the subscription has been terminated by the server
