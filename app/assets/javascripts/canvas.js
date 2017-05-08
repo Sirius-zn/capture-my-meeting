@@ -14,21 +14,6 @@ function setDrawBounds(btn, canvas, video, f1, f2) {
 			f2();
 			if (coordSrc != undefined && coordEnd != undefined) {
 				$(this).off("click");
-				// $.post({
-				// 	url: "/send_box",
-				// 	data: {
-				// 		x: coordSrc.x,
-				// 		y: coordSrc.y,
-				// 		width: coordEnd.x,
-				// 		height: coordEnd.y
-				// 	},
-				// 	success: function(data, result, xhr) {
-				// 		console.log("HOORAH, Bounding Box Saved");
-				// 	},
-				// 	error: function(data, result, xhr) {
-				// 		console.error("Error saving bounding box");
-				// 	}
-				// });
 
 				// turn off event listeners
 				$(canvas).off("mousedown");

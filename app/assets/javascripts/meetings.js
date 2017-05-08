@@ -98,7 +98,7 @@ $(document).ready(function() {
 			// suffix = suffix.toLocaleTimeString().slice(0,-3);
 			var fileName = "IMG_" + suffix + ".png";
 
-			App.meeting.send_image(fileName, imgData, meetingId);
+			App.meeting.send_image(fileName, imgData, meetingId, coordSrc, coordEnd);
 		} else {
 			console.log(":()");
 		}

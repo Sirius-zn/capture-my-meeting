@@ -4,7 +4,7 @@ App.meeting = App.cable.subscriptions.create {
 },
   connected: ->
     # Called when the subscription is ready for use on the server
-    
+
   disconnected: ->
     # Called when the subscription has been terminated by the server
 
@@ -13,5 +13,5 @@ App.meeting = App.cable.subscriptions.create {
       currImg = data['image'];
       $("img", $("#meeting")).attr("src", currImg);
 
-  send_image: (filename, image, meeting_id)->
-    @perform 'send_image', image: image, filename: filename, id: meeting_id
+  send_image: (filename, image, meeting_id, coordSrc, coordEnd)->
+    @perform 'send_image', image: image, filename: filename, id: meeting_id, src: coordSrc, end: coordEnd
