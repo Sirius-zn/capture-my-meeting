@@ -5,14 +5,56 @@
 //= require_self
 //= require_tree ./channels
 
+var peers = [];
+
 (function() {
 	this.App || (this.App = {});
 
 	App.cable = ActionCable.createConsumer();
 
+
 }).call(this);
 
+call_all_peers = function(rPeers) {
+	console.log('peers in call all peers: ' + rPeers);
+	peers = rPeers;
+	console.log('global peers: ' + peers);
+	var audioMediaOptions = {
+		audio: true,
+		video: false
+	}
+	navigator.mediaDevices.getUserMedia(audioMediaOptions).then(audioHandleSuccess).catch(audioHandleError);
+	console.log('after getUserMedia');
+}
+
+audioHandleSuccess = function(stream) {
+	console.log('in audioHandleSuccess');
+	console.log('peers: ' + peers);
+	var count = 1;
+	peers.forEach(function(otherPeer) {
+		console.log('peer count: ' + count++);
+		console.log('otherPeer id: ' + otherPeer);
+		var call = peer.call(otherPeer, stream);
+		console.log('calling peer');
+
+		call.on('stream', function(rStream) {
+			console.log("receiving stream");
+			// window.stream = stream;
+		});
+	});
+
+	peer.on('call', function(call) {
+		console.log('answering call from peer');
+		call.answer(stream);
+	});
+}
+
+audioHandleError = function(error) {
+	console.log('audio getUserMedia error: ' + error);
+}
+
 $(document).ready(function() {
+	console.log("SNAPPING");
 	var fps = 1/5;
 	var interval = 1000 / fps;
 	var mediaOptions = {
@@ -26,10 +68,10 @@ $(document).ready(function() {
 	var video, vw, vh;
 	var canvas, ctx;
 	var meetingId = -1;
-	if (window.meeting.role == "presenter") {
-		console.log("Presenting")
+	if(window.meeting.role == "presenter") {
 		navigator.mediaDevices.getUserMedia(mediaOptions).then(handleSuccess).catch(handleError);
 	}
+
 
 	function startPresenting() {
 		setTimeout(function() {

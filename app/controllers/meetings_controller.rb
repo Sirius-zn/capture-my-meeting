@@ -23,6 +23,7 @@ class MeetingsController < ApplicationController
 
   def show
     @mu = MeetingUser.find_by(:meeting_id => @meeting.id, :user_id => current_user.id)
+    @api_key = Rails.application.secrets.api_key
 
     # TODO: Output error
     redirect_to meetings_url if @mu.nil?
