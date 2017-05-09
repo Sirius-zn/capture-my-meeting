@@ -11,7 +11,7 @@ App.meeting = App.cable.subscriptions.create {
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    console.log(data);
+    # console.log(data);
     if(data['peers'])
       console.log 'peers: ', data['peers']
       call_all_peers(data['peers'])
@@ -30,8 +30,9 @@ App.meeting = App.cable.subscriptions.create {
 
 
 foo = () ->
-  peer = new Peer
+  window.meeting.peer = new Peer
     key: window.meeting.api_key
+  console.log "peer has been created"
 
-  peer.on 'open', (id) ->
+  window.meeting.peer.on 'open', (id) ->
     App.meeting.send_peer_id window.meeting.id, id

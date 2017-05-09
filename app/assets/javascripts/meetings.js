@@ -50,9 +50,27 @@ audioHandleSuccess = function(stream) {
 	console.log('peers: ' + peers);
 	var count = 1;
 	peers.forEach(function(otherPeer) {
-		console.log('peer count: ' + count++);
-		console.log('otherPeer id: ' + otherPeer);
-		var call = peer.call(otherPeer, stream);
+
+		// //Make connection PROGBABLY NOT NEEDED
+		// var conn = meeting.peer.connect(otherPeer);
+		// conn.on('open', function() {
+		// 	//Receive messages
+		// 	conn.on('data', function(data) {
+		// 		console.log('Received data from peer: ' + data);
+		// 	});
+		//
+		// 	//Send message
+		// 	conn.send('Hello from peer');
+		// });
+		//
+		// //Receive connection
+		// meeting.peer.on('connection', function(rConn) {
+		// 	console.log('Received Connection from peer');
+		// });
+
+
+		//Call peer TODO fix TypeError: b is undefined
+		var call = meeting.peer.call(otherPeer, stream);
 		console.log('calling peer');
 
 		call.on('stream', function(rStream) {
@@ -61,7 +79,7 @@ audioHandleSuccess = function(stream) {
 		});
 	});
 
-	peer.on('call', function(call) {
+	meeting.peer.on('call', function(call) {
 		console.log('answering call from peer');
 		call.answer(stream);
 	});
