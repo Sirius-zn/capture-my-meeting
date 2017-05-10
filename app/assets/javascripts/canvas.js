@@ -1,5 +1,6 @@
 var coordSrc, coordEnd;
 var dragging = false;
+var integerValue = true;
 
 function setDrawBounds(btn, canvas, video, f1, f2) {
 	btn.on("click", function(e) {
@@ -108,5 +109,9 @@ function getCanvasPos(world, canvas) {
 	canvasPoint.x *= canvas.width;
 	canvasPoint.y *= canvas.height;
 
+	if (integerValue) {
+		canvasPoint.x = Math.round(canvasPoint.x);
+		canvasPoint.y = Math.round(canvasPoint.y);
+	}
 	return canvasPoint;
 }

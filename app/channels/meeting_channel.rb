@@ -14,7 +14,7 @@ class MeetingChannel < ApplicationCable::Channel
   end
 
   def send_box(data)
-      dirname = "#{Rails.root}/uploads/#{data['meeting_id']}/#{data['user_id']}/box"
+      dirname = "#{Rails.root}/uploads/#{data['meeting_id']}/#{data['user_id']}/imgs"
 
       # Write Image to Disk
       coordinates = "#{data['src']['x']} #{data['src']['y']} #{data['dest']['x']} #{data['dest']['y']}"

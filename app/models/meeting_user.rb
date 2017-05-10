@@ -14,6 +14,6 @@ class MeetingUser < ActiveRecord::Base
         dirname = "#{Rails.root}/uploads/#{self.meeting_id}/#{self.user_id}"
         FileUtils.mkdir_p(dirname) unless File.directory?(dirname)
         FileUtils.mkdir_p("#{dirname}/imgs") unless File.directory?("#{dirname}/imgs")
-        FileUtils.mkdir_p("#{dirname}/box") unless File.directory?("#{dirname}/box")
+        # FileUtils.mkdir_p("#{dirname}/box") unless File.directory?("#{dirname}/box")
     end
 end
