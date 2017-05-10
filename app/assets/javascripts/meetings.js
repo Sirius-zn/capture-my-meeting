@@ -34,15 +34,15 @@ var peers = [];
 }).call(this);
 
 call_all_peers = function(rPeers) {
-	console.log('peers in call all peers: ' + rPeers);
-	peers = rPeers;
-	console.log('global peers: ' + peers);
-	var audioMediaOptions = {
-		audio: true,
-		video: false
-	}
-	navigator.mediaDevices.getUserMedia(audioMediaOptions).then(audioHandleSuccess).catch(audioHandleError);
-	console.log('after getUserMedia');
+	// console.log('peers in call all peers: ' + rPeers);
+	// peers = rPeers;
+	// console.log('global peers: ' + peers);
+	// var audioMediaOptions = {
+	// 	audio: true,
+	// 	video: false
+	// }
+	// navigator.mediaDevices.getUserMedia(audioMediaOptions).then(audioHandleSuccess).catch(audioHandleError);
+	// console.log('after getUserMedia');
 }
 
 audioHandleSuccess = function(stream) {
