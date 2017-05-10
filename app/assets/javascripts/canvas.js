@@ -37,7 +37,7 @@ function specifyWhiteboardBounds(canvas, video) {
 	ctx = canvas.getContext("2d");
 
 	if (window.stream) {
-		ctx.drawImage(video, 0, 0, $(video).width(), $(video).height());
+		ctx.drawImage(video, 0, 0, vw, vh);
 		bg = new Image;
 		bg.src = canvas.toDataURL()
 

@@ -96,22 +96,29 @@ function startPresenting() {
 
 function updateMedia() {
 	video = $("#video-src")[0];
-	vw = $(video).width();
-	vh = $(video).height();
+	vw = video.videoWidth;
+	vh = video.videoHeight;
+	console.log(vw, vh);
 
 	canvas = $("#meeting-canvas")[0];
-	canvas.width = $(video).width();
-	canvas.height = $(video).height();
+	canvas.width = vw;
+	canvas.height = vh;
 	ctx = canvas.getContext("2d");
 }
 
 function handleSuccess(stream) {
 	updateMedia();
-	meetingId = $("#meeting").data("meeting-id");
-	window.stream = stream;
+	video.addEventListener('loadeddata', function() {
+		updateMedia();
+		$(".actions").removeClass("hidden");
+		meetingId = $("#meeting").data("meeting-id");
+		window.stream = stream;
+		startPresenting();
+		callSetDrawBounds(canvas, video);
+
+	}, false);
+
 	video.src = window.URL.createObjectURL(stream);
-	startPresenting();
-	callSetDrawBounds(canvas, video);
 }
 
 function callSetDrawBounds(canvas, video) {
