@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require peer.min.js
+//= require jquery.min.js
