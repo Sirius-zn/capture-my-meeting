@@ -9,8 +9,9 @@ class MeetingUser < ActiveRecord::Base
     belongs_to :meeting
     after_create_commit :create_image_folder
 
-
+	# Only creates a folder for a presenter
     def create_image_folder
+		return unless self.user_role == "presenter"
         dirname = "#{Rails.root}/uploads/#{self.meeting_id}/#{self.user_id}"
         FileUtils.mkdir_p(dirname) unless File.directory?(dirname)
         FileUtils.mkdir_p("#{dirname}/imgs") unless File.directory?("#{dirname}/imgs")
