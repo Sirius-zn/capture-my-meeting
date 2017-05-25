@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require peer.min.js
 //= require jquery.min.js
+//= require tracking-min.js

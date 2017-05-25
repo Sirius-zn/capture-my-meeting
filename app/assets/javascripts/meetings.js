@@ -5,6 +5,7 @@
 //= require_self
 //= require_tree ./channels
 //= require ./canvas.js
+//= require ./filter.js
 
 var setting_box = false;
 var fps = 1/5;
