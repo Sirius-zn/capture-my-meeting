@@ -1,10 +1,13 @@
 <script type="text/javascript">
 	window.meeting.role = "<%= @mu.user_role %>";
 	window.meeting.id = "<%= @meeting.id %>";
+	window.meeting.id = "<%= current_user.id %>"
 	window.meeting.api_key = "<%= @api_key %>"
 </script>
 
 <div id="info">
+	<% redirect_to "/" if current_user.nil? %>
+	
 	<% if @mu.user_role == "presenter" %>
 		<div class="actions hidden">
 			<button class="set-box">Set Boundaries</button>

@@ -1,6 +1,7 @@
 App.meeting = App.cable.subscriptions.create {
   channel: "MeetingChannel"
   id: window.meeting.id
+  uid: window.meeting.uid
 },
   connected: ->
     # Called when the subscription is ready for use on the server
