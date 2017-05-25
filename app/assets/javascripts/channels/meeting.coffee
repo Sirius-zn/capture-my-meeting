@@ -5,8 +5,6 @@ App.meeting = App.cable.subscriptions.create {
 },
   connected: ->
     # Called when the subscription is ready for use on the server
-    foo()
-    begin
 
   disconnected: ->
     # Called when the subscription has been terminated by the server
@@ -28,11 +26,3 @@ App.meeting = App.cable.subscriptions.create {
 
   send_box: (user_id, meeting_id, coordSrc, coordEnd) ->
     @perform 'send_box', user_id: user_id, meeting_id: meeting_id, src: coordSrc, dest: coordEnd
-
-
-foo = () ->
-  peer = new Peer
-    key: window.meeting.api_key
-
-  peer.on 'open', (id) ->
-    App.meeting.send_peer_id window.meeting.id, id
