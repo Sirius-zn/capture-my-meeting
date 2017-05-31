@@ -1,9 +1,8 @@
 class MeetingChannel < ApplicationCable::Channel
     include SessionsHelper
-    
+
     def subscribed
-        stream_from "meetings_#{params['id']}"
-        stream_From "meeting_#{params['uid']}"
+        stream_From "meeting_#{params['id']}_#{params['uid']}"
     end
 
     def unsubscribed
@@ -11,7 +10,11 @@ class MeetingChannel < ApplicationCable::Channel
     end
 
     def send_image(data)
-        MeetingBroadcastJob.perform_now data['user_id'], data['filename'], data['image'], data['id'], data['src'], data['dest']
+        MeetingBroadcastJob.perform_now data['user_id'], data['filename'], data['image'], data['id']
+    end
+
+    def get_image(data)
+        MeetingGetImageJob.perform_now data['user_id'], data['meeting_id']
     end
 
     def send_box(data)
