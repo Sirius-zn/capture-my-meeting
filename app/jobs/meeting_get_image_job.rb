@@ -1,4 +1,4 @@
-class MeetingBroadcastJob < ApplicationJob
+class MeetingGetImageJob < ApplicationJob
     queue_as :default
     @@img_cache = {}
 
@@ -6,7 +6,7 @@ class MeetingBroadcastJob < ApplicationJob
     # @param user_id - ID of user asking for an image
     # @param meeting_id - meeting room of the user
     def perform(user_id, meeting_id)
-        path = "#{Rails.root}/uploads/#{meeintg_id}/test.png"
+        path = "#{Rails.root}/uploads/#{meeting_id}/test.png"
         fixed_image = nil
         status = false
         if File.exists?(path)
@@ -25,6 +25,6 @@ class MeetingBroadcastJob < ApplicationJob
         end
 
         # status `true` if succssfully read image from path
-        ActionCable.server.broadcast "meetings_#{meeting_id}_#{user_id}", image: fixed_image, status: status, from: "get_image"
+        ActionCable.server.broadcast "meeting_#{meeting_id}_#{user_id}", image: fixed_image, status: status, from: "get_image"
     end
 end

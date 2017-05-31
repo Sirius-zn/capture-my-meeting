@@ -19,7 +19,7 @@ class MeetingBroadcastJob < ApplicationJob
         end
 
         # status `true` if image successfully read to disk
-        ActionCable.server.broadcast "meetings_#{id}_#{user_id}", status: status, from: "send_image"
+        ActionCable.server.broadcast "meeting_#{id}_#{user_id}", status: status, from: "send_image"
     end
 
 end
