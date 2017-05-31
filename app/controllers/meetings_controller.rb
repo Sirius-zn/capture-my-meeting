@@ -1,6 +1,7 @@
 class MeetingsController < ApplicationController
     skip_before_filter :verify_authenticity_token
     before_action :set_meeting, only: [:show, :edit, :update, :destroy]
+    before_action :check_user, only: [:show, :join]
 
     include MeetingsHelper
 
@@ -31,7 +32,7 @@ class MeetingsController < ApplicationController
 
     def show
         @mu = MeetingUser.find_by(:meeting_id => @meeting.id, :user_id => current_user.id)
-        
+
         # TODO: Output error
         redirect_to meetings_url if @mu.nil?
     end
@@ -72,5 +73,9 @@ class MeetingsController < ApplicationController
 
     def meeting_params
         params.require(:user_role)
+    end
+
+    def check_user
+        redirect_to "/" if current_user.nil?
     end
 end
