@@ -23,8 +23,6 @@ var canvas, ctx;
 var meetingId = -1;
 var myTimeout;
 
-var peers = [];
-
 (function() {
 	this.App || (this.App = {});
 
@@ -32,44 +30,6 @@ var peers = [];
 
 
 }).call(this);
-
-call_all_peers = function(rPeers) {
-	// console.log('peers in call all peers: ' + rPeers);
-	// peers = rPeers;
-	// console.log('global peers: ' + peers);
-	// var audioMediaOptions = {
-	// 	audio: true,
-	// 	video: false
-	// }
-	// navigator.mediaDevices.getUserMedia(audioMediaOptions).then(audioHandleSuccess).catch(audioHandleError);
-	// console.log('after getUserMedia');
-}
-
-audioHandleSuccess = function(stream) {
-	console.log('in audioHandleSuccess');
-	console.log('peers: ' + peers);
-	var count = 1;
-	peers.forEach(function(otherPeer) {
-		console.log('peer count: ' + count++);
-		console.log('otherPeer id: ' + otherPeer);
-		var call = peer.call(otherPeer, stream);
-		console.log('calling peer');
-
-		call.on('stream', function(rStream) {
-			console.log("receiving stream");
-			// window.stream = stream;
-		});
-	});
-
-	peer.on('call', function(call) {
-		console.log('answering call from peer');
-		call.answer(stream);
-	});
-}
-
-audioHandleError = function(error) {
-	console.log('audio getUserMedia error: ' + error);
-}
 
 $(document).ready(function() {
 	begin();
@@ -83,15 +43,7 @@ function begin() {
 }
 
 function startPresenting() {
-	if (!setting_box) {
-		myTimeout = setTimeout(function() {
-			updateMedia();
-			takeSnapshot();
-			startPresenting();
-		}, interval);
-	} else {
-		console.warn("D:");
-	}
+	takeSnapshot();
 }
 
 function updateMedia() {
@@ -112,6 +64,7 @@ function handleSuccess(stream) {
 		updateMedia();
 		$(".actions").removeClass("hidden");
 		meetingId = $("#meeting").data("meeting-id");
+		window.meeting.id = meetingId;
 		window.stream = stream;
 		startPresenting();
 		callSetDrawBounds(canvas, video);
@@ -134,7 +87,7 @@ function callSetDrawBounds(canvas, video) {
 		console.log("GOODBYE");
 		$(canvas).addClass("hidden");
 		$("img").removeClass("hidden");
-		App.meeting.send_box(window.meeting.current_id, window.meeting.id, coordSrc, coordEnd);
+		App.meeting.send_box(window.meeting.current_id, meetingId, coordSrc, coordEnd);
 		startPresenting();
 	}));
 }
@@ -144,6 +97,7 @@ function handleError(error) {
 }
 
 function takeSnapshot() {
+	updateMedia();
 	if (window.stream && !setting_box) {
 		console.log("Snap");
 		ctx.drawImage(video, 0, 0, vw, vh);
@@ -153,8 +107,8 @@ function takeSnapshot() {
 		// suffix = suffix.toLocaleTimeString().slice(0,-3);
 		var fileName = "IMG_" + suffix + ".png";
 
-		App.meeting.send_image(window.meeting.current_id, fileName, imgData, meetingId, coordSrc, coordEnd);
+		App.meeting.send_image(window.meeting.current_id, fileName, imgData, meetingId);
 	} else {
-		console.log(":()");
+		console.warn("Snapshot failed");
 	}
 }

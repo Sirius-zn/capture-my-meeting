@@ -2,7 +2,7 @@ class MeetingChannel < ApplicationCable::Channel
     include SessionsHelper
 
     def subscribed
-        stream_From "meeting_#{params['id']}_#{params['uid']}"
+        stream_from "meeting_#{params['id']}_#{params['uid']}"
     end
 
     def unsubscribed
@@ -25,6 +25,6 @@ class MeetingChannel < ApplicationCable::Channel
         File.open("#{dirname}/coordinates.txt", "w+") { |f| f.write "#{coordinates}" }
         status = true;
 
-        ActionCable.server.broadcast "meetings_#{data['meeting_id']}", status: status
+        ActionCable.server.broadcast "meetings_#{data['meeting_id']}_#{data['user_id']}", status: status
     end
 end
