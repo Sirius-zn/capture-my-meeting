@@ -6,7 +6,9 @@ App.meeting = App.cable.subscriptions.create {
     connected: ->
         # Called when the subscription is ready for use on the server
         App.meeting.get_image(window.meeting.current_id, window.meeting.id)
-        takeSnapshot()
+        if window.meeting.role == "presenter"
+            takeSnapshot()
+
 
     disconnected: ->
         # Called when the subscription has been terminated by the server
