@@ -23,6 +23,7 @@ var video, vw, vh;
 var canvas, ctx;
 var meetingId = -1;
 var myTimeout;
+var filter;
 
 var peers = [];
 
@@ -78,7 +79,8 @@ $(document).ready(function() {
 
 function begin() {
 	if (window.meeting.role == "presenter") {
-		console.log("Presenting")
+		updateMedia();
+		console.log("Presenting");
 		navigator.mediaDevices.getUserMedia(mediaOptions).then(handleSuccess).catch(handleError);
 	}
 }
@@ -99,6 +101,8 @@ function updateMedia() {
 	video = $("#video-src")[0];
 	vw = video.videoWidth;
 	vh = video.videoHeight;
+	// vw = 600;
+	// vh = 450;
 	console.log(vw, vh);
 
 	canvas = $("#meeting-canvas")[0];
@@ -108,6 +112,10 @@ function updateMedia() {
 }
 
 function handleSuccess(stream) {
+	setTimeout(function() {
+
+		filter = new Filter(canvas, video);
+	}, 2000);
 	updateMedia();
 	video.addEventListener('loadeddata', function() {
 		updateMedia();
