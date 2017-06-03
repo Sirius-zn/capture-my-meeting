@@ -23,7 +23,10 @@ var video, vw, vh;
 var canvas, ctx;
 var meetingId = -1;
 var myTimeout;
-var filter;
+var filter = false;
+
+// For receiving images
+var image;
 
 (function() {
 	this.App || (this.App = {});
@@ -61,13 +64,19 @@ function updateMedia() {
 	canvas.width = vw;
 	canvas.height = vh;
 	ctx = canvas.getContext("2d");
+
+	image = $("#incoming")[0];
+	if(image.src && !filter) {
+		filter = new Filter(image);
+		$('#incoming').on('load', function() {
+			console.log('new image');
+			filter.setImage(image);
+			filter.trackImage();
+		});
+	}
 }
 
 function handleSuccess(stream) {
-	setTimeout(function() {
-
-		filter = new Filter(canvas, video);
-	}, 2000);
 	updateMedia();
 	video.addEventListener('loadeddata', function() {
 		updateMedia();
