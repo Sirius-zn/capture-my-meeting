@@ -69,7 +69,6 @@ function updateMedia() {
 	if(image.src && !filter) {
 		filter = new Filter(image);
 		$('#incoming').on('load', function() {
-			console.log('new image');
 			filter.setImage(image);
 			filter.trackImage();
 		});
